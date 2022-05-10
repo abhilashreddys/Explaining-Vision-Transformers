@@ -1,7 +1,4 @@
 """
-Vision Transformer model class put together by
-Aritra (ariG23498) and Sayak (sayakpaul)
-
 Reference:
     https://github.com/rwightman/pytorch-image-models/blob/master/timm/models/vision_transformer.py
 """
