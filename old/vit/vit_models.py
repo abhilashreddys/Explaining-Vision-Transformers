@@ -1,11 +1,3 @@
-"""
-Vision Transformer model class put together by
-Aritra (ariG23498) and Sayak (sayakpaul)
-
-Reference:
-    https://github.com/rwightman/pytorch-image-models/blob/master/timm/models/vision_transformer.py
-"""
-
 from typing import List
 
 import tensorflow as tf
@@ -51,7 +43,7 @@ def transformer(config: ConfigDict, name: str, drop_prob=0.0) -> keras.Model:
         ), "Distillation token is not suitable for GAP."
         num_patches = config.num_patches + 0
 
-    encoded_patches = layers.Input((None, config.projection_dim))
+    encoded_patches = layers.Input((num_patches, config.projection_dim))
 
     # Layer normalization 1.
     x1 = layers.LayerNormalization(epsilon=config.layer_norm_eps)(
@@ -111,7 +103,7 @@ class ViTClassifier(keras.Model):
                     kernel_initializer="lecun_normal",
                 ),
                 layers.Reshape(
-                    target_shape=(-1, config.projection_dim),
+                    target_shape=(config.num_patches, config.projection_dim),
                     name="flatten_projection",
                 ),
             ],

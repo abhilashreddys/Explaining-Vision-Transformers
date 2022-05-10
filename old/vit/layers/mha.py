@@ -1,4 +1,4 @@
-# Copied and modified from:
+# Modified from:
 # https://github.com/huggingface/transformers/blob/master/src/transformers/models/vit/modeling_tf_vit.py
 
 import math
